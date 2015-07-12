@@ -1,14 +1,14 @@
 {
-  "name": "quiz",
+  "name": "quizprueba",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
-   "engines": {
+  "engines": {
     "node": "0.12.x",
     "npm": "2.10.x"
-  },  
+  },
   "dependencies": {
     "body-parser": "~1.8.1",
     "cookie-parser": "~1.3.3",
@@ -18,5 +18,10 @@
     "express-partials": "^0.3.0",
     "morgan": "~1.3.0",
     "serve-favicon": "~2.1.3"
-  }
+  },
+  "description": "prueba programa quiz",
+  "main": "app.js",
+  "devDependencies": {},
+  "author": "A.Ropero",
+  "license": "ISC"
 }

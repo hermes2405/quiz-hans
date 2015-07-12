@@ -8,6 +8,9 @@ h2 span, section h3{
 body{
   font-size: xx-large;
  }
-input, footer{ 
+section{
+  overflow:hidden;
+ }
+input, footer{
   font-size: large;
   }
