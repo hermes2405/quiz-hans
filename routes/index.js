@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz' });
 });
 
-router.get('/', function(req, res) {
+router.get('/author', function(req, res) {
 	var datos = {
 		nombre    : "Alberto",
 		apellidos : "Montenegro Sejas",
