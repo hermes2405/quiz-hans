@@ -14,7 +14,7 @@ router.get('/author', function(req, res) {
 		profesion : "Ing. de Sistemas",
 		foto      : "image/foto.jpg"
 	}
-  	res.render('index', datos);
+  	res.render('author', datos);
 });
 
 router.get('/quizes/question', quizController.question);
