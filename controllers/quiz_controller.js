@@ -21,7 +21,7 @@ exports.index = function(req, res) {
   }
   quizes.then(
     function(quizes){
-      res.render('quizes/index', {quizes: quizes, search:search});
+      res.render('quizes/index', {quizes: quizes});
     }
   ).catch(function(error){next(error);});
 
