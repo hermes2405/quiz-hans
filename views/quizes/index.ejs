@@ -1,4 +1,18 @@
+<form class="" action="" method="get">
+  <p>Buscar preguntas</p>
+  <input type="text" name="search" placeholder="Escriba lo que quiere buscar" />
+  <input type="submit" value="Buscar">
+</form>
+
 <table>
+
+  <% if (quizes.length === 0){ %>
+    <tr>
+      <td>No existe ninguna pregunta con la búsqueda realizada,<br>
+        por favor introduzca otra búsqueda o vaya a Preguntas<br>
+        en el menú de la izquierda para ver todas la preguntas existentes </td>
+    </tr>
+  <% } %>
   <% var i; for (i=0; i < quizes.length; i++) { %>
     <tr>
       <td>
