@@ -17,7 +17,7 @@ exports.index = function(req, res) {
   var search = ('%' + req.query.search + '%').replace(/\s+/g,"%");
   var quizes = models.Quiz.findAll();
   if (search !== '%'+undefined+'%'){
-    quizes = models.Quiz.findAll({where:["pregunta like ?", search],order:"pregunta"});
+    quizes = models.Quiz.findAll({where:["lower(pregunta) like ?", search.toLowerCase()],order:"pregunta"});
   }
   quizes.then(
     function(quizes){
