@@ -49,6 +49,10 @@ video{
 nav span{
 	margin: 0 10px 0 0;
 }
+#ErrorMsgs{
+	color:rgb(236, 41, 70);
+	font-size:smaler;
+}
 footer a{
 	margin-right:20px;
 }
