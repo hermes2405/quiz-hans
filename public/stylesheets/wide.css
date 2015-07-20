@@ -16,6 +16,12 @@ section{
   height: 300px ;
   overflow:hidden;
 }
+#izquierda{
+  display:inline;
+}
+#arriba{
+  display:none;
+}
 section figure{
   float:left;
   margin-top:10%;

@@ -10,7 +10,7 @@
     <tr>
       <td>No existe ninguna pregunta con la búsqueda realizada,<br>
         por favor introduzca otra búsqueda o vaya a Preguntas<br>
-        en el menú de la izquierda para ver todas la preguntas existentes </td>
+        en el menú de <span id="izquierda">la izquierda</span><span id="arriba">arriba</span> para ver todas la preguntas existentes </td>
     </tr>
   <% } %>
   <% var i; for (i=0; i < quizes.length; i++) { %>
@@ -21,3 +21,4 @@
     </tr>
   <% } %>
 </table>
+<a href="/quizes/new"><button type="button">Crear pregunta</button></a>
