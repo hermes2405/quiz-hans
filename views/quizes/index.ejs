@@ -3,7 +3,7 @@
   <input type="text" name="search" placeholder="Escriba lo que quiere buscar" />
   <input type="submit" value="Buscar">
 </form>
-
+<a href="/quizes/new"><button type="button">Crear pregunta</button></a>
 <table>
 
   <% if (quizes.length === 0){ %>
@@ -13,10 +13,16 @@
         en el menú de <span id="izquierda">la izquierda</span><span id="arriba">arriba</span> para ver todas la preguntas existentes </td>
     </tr>
   <% } %>
+  <tr>
+    <th colspan="3" >Todos los temas</th>
+  </tr>
   <% var i; for (i=0; i < quizes.length; i++) { %>
     <tr>
       <td>
         <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
+      </td>
+      <td class="tema">
+        <%= quizes[i].tema %>
       </td>
       <td>
         <a href="quizes/<%= quizes[i].id %>/edit"><button>Editar</button></a>
@@ -27,8 +33,7 @@
             Borrar
           </button>
         </form>
-      </td>  
+      </td>
     </tr>
   <% } %>
 </table>
-<a href="/quizes/new"><button type="button">Crear pregunta</button></a>

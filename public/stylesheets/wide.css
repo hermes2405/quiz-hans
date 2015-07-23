@@ -1,19 +1,15 @@
 body { background: #999; }
 
-#page-wrap:after { content: "Wide cambiando"; }
+/*#page-wrap:after { content: "Wide cambiando"; }*/
 
 nav{
-  float: left;
   width: 15%;
-  height: 300px ;
 }
 nav span{
   margin: 0px 100px 0px 0px;
 }
 section{
-  float: right;
   width: 80%;
-  height: 300px ;
   overflow:hidden;
 }
 #izquierda{
@@ -22,18 +18,26 @@ section{
 #arriba{
   display:none;
 }
+.contenedor{
+	display:flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+nav a{
+	display:block;
+}
 section figure{
-  float:left;
-  margin-top:10%;
+
+  display:inline;
 }
 section figure img{
-  width:40%;
+  width:10%;
 }
 section div{
-  float:right;
+  display:inline;
   margin-right:3%;
 }
 footer{
-  clear: both;
+
   display: block;
 }

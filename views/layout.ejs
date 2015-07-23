@@ -12,28 +12,32 @@
           type='text/css'
           media='only screen and (max-width: 480px)'
           href='/stylesheets/smartphone.css' />
+    <script  src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="/javascripts/layout.js" type="text/javascript"></script>
   </head>
   <body>
     <div id="page-wrap">
       <header class="main" id="h1">
         <h2>Quiz<span>: el juego de las preguntas</span></h2>
       </header>
-      <nav class="main" id="n1" role="navigation">
-        <span><a href="/">Inicio</a></span>
-        <span><a href="/quizes">Preguntas</a></span>
-        <span><a href="/author">Autor</a></span>
-      </nav>
-      <section class="main" id="s1">
-        <% if (errors.length){ %>
-          <span id="ErrorMsgs">
-            Corregir errores:<br/>
-            <% for (var i in errors){ %>
-              <span> <%= errors[i].message %> </span><br/>
-            <% } %>
-          </span>
-        <%} %>
-        <%- body %>
-      </section>
+      <div class="contenedor">
+        <nav class="main" id="n1" role="navigation">
+          <a href="/">Inicio</a>
+          <a href="/quizes">Preguntas</a>
+          <a href="/author">Autor</a>
+        </nav>
+        <section class="main" id="s1">
+          <% if (errors.length){ %>
+            <span id="ErrorMsgs">
+              Corregir errores:<br/>
+              <% for (var i in errors){ %>
+                <span> <%= errors[i].message %> </span><br/>
+              <% } %>
+            </span>
+          <%} %>
+          <%- body %>
+        </section>
+    </div>
       <footer class="main" id="f1">
         <a href="http://es.wikipedia.org/wiki/Quiz" target="_blank">¿Que es un Quiz?</a>
         <a href="http://github.com/Antonio-Ropero-Muela/quiz-2015.git" target="_blank">Proyecto github</a>

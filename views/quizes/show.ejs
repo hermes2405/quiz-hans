@@ -1,6 +1,22 @@
-
+    <h3> <%= quiz.tema %></h3>
     <form class="" action="/quizes/<%= quiz.id %>/answer" method="get">
       <p>Pregunta: <%= quiz.pregunta %> </p>
       <input type="text" name="respuesta" placeholder="Responda aquí" />
       <input type="submit" value="Enviar">
     </form>
+
+    <table>
+      <tr>
+        <td>
+          <h2>Preguntas de la misma temática</h2>
+        </td>
+      <% var i; for (i=0; i < tema.length; i++) { %>
+
+        <tr>
+          <td>
+            <a href="<%= tema[i].id %>"><%= tema[i].pregunta %></a>
+          </td>
+
+        </tr>
+      <% } %>
+    </table>

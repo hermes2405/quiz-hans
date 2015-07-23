@@ -4,16 +4,53 @@
 }
 body{
 	font: 16px Georgia, serif;
+	background:rgb(244, 111, 54) !important;
+	color:#5e3020;
+	padding:3%;
+
+}
+.tema{
+	background:rgb(244, 111, 54);
+}
+.contenedor{
+	height:auto ;
 }
 #page-wrap{
 	margin: 2% auto;
-	color: white;
+	color:#5e3020;
 }
-#page-wrap > .main{
-	border: 1px solid #999;
+td h2{
+	color:rgb(244, 111, 54);
+}
+input[type='text'], select{
+	color:#5e3020;
+	padding: 1%;
+	border: 1px solid rgb(244, 111, 54);
+	margin:1%;
+}
+button, input[type='submit'] {
+	background:#5e3020;
+	color:rgb(251, 194, 141);
+	padding:1%;
+	border:1px ridge rgb(244, 111, 54);
+	cursor:pointer;
+}
+td button{
+	margin:2%;
+}
+td{
+	padding-top:2%;
+	padding-buttom:2%;
+}
+
+input:focus, select:focus{
+	outline:none;
+	border: 1px solid #5e3020;
+}
+#page-wrap > .main, .contenedor > .main{
+	border: 1px solid #5e3020;
 	padding: 1%;
 	margin-bottom: 1px;
-	color: black;
 }
 #izquierda{
   display:none;
@@ -22,20 +59,40 @@ body{
   display:inline;
 }
 h2 span{
-	color:blue;
+	color:rgb(251, 194, 141);
 }
 section > div{
 	padding: 20px;
 }
 header, nav, section {
 	background: #eee;
+	background:rgb(251, 194, 141);
 	text-align: center;
 	overflow:hidden;
 }
-footer{
-	background: #eee;
+header, footer {
+	background:#5e3020 ! important;
+	color:rgb(251, 194, 141) ! important;
 	text-align: center;
 }
+footer a{
+
+}
+a{
+	text-decoration: none;
+	color:#5e3020;
+}
+nav a{
+	display:inline;
+	padding:2%;
+}
+nav a:hover{
+	background:#5e3020;
+	color:rgb(251, 194, 141);sc
+}
+.contenedor{
+   height:auto;
+ }
 figure{
 	margin-top:2%;
 }
@@ -44,7 +101,8 @@ img{
 	margin:0 auto;
 }
 video{
-	margin:5% auto;
+	margin-top: 5%;
+	margin-left: 5%;
 }
 nav span{
 	margin: 0 10px 0 0;
@@ -53,6 +111,17 @@ nav span{
 	color:rgb(236, 41, 70);
 	font-size:smaler;
 }
+td a{
+	border-bottom:1px solid transparent;
+}
+td a:hover{
+	border-bottom:1px solid #5e3020;
+}
 footer a{
+	color:rgb(251, 194, 141) ! important;
 	margin-right:20px;
+	border-bottom:1px solid transparent;
+}
+footer a:hover{
+	border-bottom:1px solid rgb(251, 194, 141);
 }
