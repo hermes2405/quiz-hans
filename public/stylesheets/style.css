@@ -29,11 +29,19 @@ input[type='text'], select{
 	margin:1%;
 }
 button, input[type='submit'] {
-	background:#5e3020;
+  border: 1px solid #5e3020;
+  color:#5e3020;
+  background:rgb(251, 194, 141);
+  padding:10px;
+}
+.tema button{
+	border:0;
+	background:none;
+	padding:0;
+}
+button:hover, input[type='submit']:hover{
 	color:rgb(251, 194, 141);
-	padding:1%;
-	border:1px ridge rgb(244, 111, 54);
-	cursor:pointer;
+	background:#5e3020;
 }
 td button{
 	margin:2%;
@@ -75,8 +83,8 @@ header, footer {
 	color:rgb(251, 194, 141) ! important;
 	text-align: center;
 }
-footer a{
-
+footer {
+	clear:both;
 }
 a{
 	text-decoration: none;

@@ -18,10 +18,71 @@ section{
 #arriba{
   display:none;
 }
-.contenedor{
+.listado {
+  border:1px solid #5e3020;
+}
+.contenedor, .navegador, .filtro, .listado, .listado1{
 	display:flex;
 	flex-flow: row wrap;
-	justify-content: space-between;
+	justify-content: space-around;
+}
+.navegador{
+  justify-content: space-around;
+}
+.filtro, .listado, .listado1{
+  justify-content: space-between;
+}
+.listado1{
+  border:1px solid #000;
+  flex-grow: 2;
+  width:45%;
+}
+.listado1 div{
+  width:49.5%;
+
+}
+.preguntas p, .tema p {
+  padding:4%;
+}
+.preguntas{
+  text-align:left;
+
+}
+.preguntas a, .tema a, .tema button{
+  display:block;
+  padding:4%;
+}
+.tema button{
+  padding-left: 40%;
+  padding-right:40%;
+  font-size:1.05em;
+  display:inline-block;
+}
+.tema{
+  text-align:center;
+}
+.navegador button, .navegador input[type='submit']{
+  border-top: 1px solid #5e3020;
+  border-left: 1px solid #5e3020;
+  border-bottom: 1px solid #5e3020;
+  border-right:none;
+  color:#5e3020;
+  background:rgb(251, 194, 141);
+  padding:10px;
+}
+.navegador button{
+  border:1px solid #5e3020;
+}
+.navegador button:hover, .navegador input[type='submit']:hover{
+  color:rgb(251, 194, 141);
+  background:#5e3020;
+}
+.navegador .todo{
+
+  border-right:none;
+}
+.navegador .otro{
+  border-right: 1px solid #5e3020!important;
 }
 nav a{
 	display:block;
@@ -35,7 +96,7 @@ section figure img{
 }
 section div{
   display:inline;
-  margin-right:3%;
+
 }
 footer{
 
