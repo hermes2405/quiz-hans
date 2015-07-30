@@ -7,13 +7,25 @@ body{
 	background:rgb(244, 111, 54) !important;
 	color:#5e3020;
 	padding:3%;
-
 }
-.tema{
+header a{
+	color:rgb(251, 194, 141);
+}
+/*.tema{
 	background:rgb(244, 111, 54);
-}
+}*/
 .contenedor{
 	height:auto ;
+}
+.listado1{
+	background:rgb(244, 111, 54);
+}
+.preguntas, .tema{
+	background:rgb(251, 194, 141);
+}
+.titulo_preguntas{
+	background:#F49D77;
+	color:#5e3020;
 }
 #page-wrap{
 	margin: 2% auto;
@@ -22,10 +34,10 @@ body{
 td h2{
 	color:rgb(244, 111, 54);
 }
-input[type='text'], select{
+input[type='text'], select, input[type='password']{
 	color:#5e3020;
 	padding: 1%;
-	border: 1px solid rgb(244, 111, 54);
+	border: 1px solid #5e3020;
 	margin:1%;
 }
 button, input[type='submit'] {
@@ -51,9 +63,9 @@ td{
 	padding-buttom:2%;
 }
 
-input:focus, select:focus{
+input:focus,input[type='password']:focus, select:focus{
 	outline:none;
-	border: 1px solid #5e3020;
+	border: 1px solid rgb(244, 111, 54);
 }
 #page-wrap > .main, .contenedor > .main{
 	border: 1px solid #5e3020;

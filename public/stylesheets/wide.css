@@ -18,8 +18,8 @@ section{
 #arriba{
   display:none;
 }
-.listado {
-  border:1px solid #5e3020;
+.login{
+  margin-top:5%;
 }
 .contenedor, .navegador, .filtro, .listado, .listado1{
 	display:flex;
@@ -34,13 +34,15 @@ section{
 }
 .listado1{
   border:1px solid #000;
+  border: 1px solid rgb(244, 111, 54);
   flex-grow: 2;
   width:45%;
 }
-.listado1 div{
-  width:49.5%;
+.listado1 div,.listado form{
+  width:49.75%;
 
 }
+
 .preguntas p, .tema p {
   padding:4%;
 }
@@ -76,6 +78,28 @@ section{
 .navegador button:hover, .navegador input[type='submit']:hover{
   color:rgb(251, 194, 141);
   background:#5e3020;
+}
+.listado1 div a, .listado div p{
+  width:100%;
+}
+.listado1 form, .listado1 div{
+  display:flex;
+  align-items: stretch;
+}
+
+#boton_borrar{
+  width:100%;
+  font-size: 0.96em;
+  border:1px solid rgb(251, 194, 141);
+  cursor:pointer;
+}
+#boton_borrar:hover, .tema a:hover, .preguntas a:hover{
+  color:rgb(251, 194, 141);
+  background:#5e3020;
+  background:#7c5c51;
+}
+#boton_borrar:hover{
+  border:1px solid #7c5c51 ;
 }
 .navegador .todo{
 
