@@ -31,7 +31,11 @@ header a{
 	margin: 2% auto;
 	color:#5e3020;
 }
-td h2{
+nav h4, .mas_preguntas nav a{
+	width:100%;
+	border-bottom: 1px solid #5e3020;
+}
+nav h4{
 	color:rgb(244, 111, 54);
 }
 input[type='text'], select, input[type='password']{

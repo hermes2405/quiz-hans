@@ -36,10 +36,10 @@ exports.index = function(req, res) {
   }else{
     tema = "preguntas";
   }
-
+  var temas=['Humanidades','Ocio','Tecnología','Ciencia','Otro'];
   quizes.then(
     function(quizes){
-      res.render('quizes/index', {quizes: quizes, tema: tema, errors: []});
+      res.render('quizes/index', {quizes: quizes, tema: tema,temas:temas, errors: []});
     }
   ).catch(function(error){next(error);});
 

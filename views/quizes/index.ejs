@@ -13,30 +13,17 @@
     </div>
     <% } %>
     <div class="filtro">
+    
     <form class="" action="" method="get">
       <input type="hidden" name="search" ></input>
       <input type="submit" class="todo" value="Todo" />
     </form>
+    <% for (tema in temas) { %>
     <form class="" action="" method="get">
-      <input type="hidden" name="tema" value="humanidades"></input>
-      <input type="submit"  value="Humanidades" />
+      <input type="hidden" name="tema" value= <%= temas[tema] %> ></input>
+      <input type="submit" <% if (temas[tema] === 'Otro'){ %> class="otro" <% } %> value="<%= temas[tema] %>"/>
     </form>
-    <form class="" action="" method="get">
-      <input type="hidden" name="tema" value="ocio"></input>
-      <input type="submit"  value="Ocio" />
-    </form>
-    <form class="" action="" method="get">
-      <input type="hidden" name="tema" value="ciencia"></input>
-      <input type="submit"  value="Ciencia" />
-    </form>
-    <form class="" action="" method="get">
-      <input type="hidden" name="tema" value="tecnologia"></input>
-      <input type="submit"  value="Tecnología" />
-    </form>
-    <form class="" action="" method="get">
-      <input type="hidden" name="tema" value="otro"></input>
-      <input type="submit" class="otro" value="Otro" />
-    </form>
+      <% } %>
   </div>
 </div>
 <div class="contenedor_listado">

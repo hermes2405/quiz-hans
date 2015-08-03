@@ -12,12 +12,17 @@ var routes = require('./routes/index');
 
 var app = express();
 
+// duración de la session para autologout
+var sessionEnd = 2*60*1000;
+// hora actual
+var actualTime = Date.now();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(partials());
 // uncomment after placing your favicon in /public
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/quiz.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -26,6 +31,18 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Middleware para expiración de sesiones por exceso de tiempo (2 minutos) sin actividad
+app.use(function(req, res, next) {
+    if (req.session.user) {
+        var lastTimeAction = req.session.user.last
+        if (actualTime - lastTimeAction > sessionEnd) {
+            delete req.session.user;
+        } else {
+            lastTimeAction = Date.now();
+        }
+    }
+next();
+});
 // Helpers dinámicos:
 app.use(function(req, res, next){
 

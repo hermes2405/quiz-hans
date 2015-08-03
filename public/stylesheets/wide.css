@@ -1,25 +1,98 @@
-body { background: #999; }
+@font-face {
+  font-family: Ravie;
+    src:url('/fonts/ravie.ttf')format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /*#page-wrap:after { content: "Wide cambiando"; }*/
 
+/*+++++++++
+ header
++++++++++++*/
+header{
+  display:flex;
+	flex-flow: row wrap;
+	justify-content:space-between;
+}
+header figure{
+  margin:0;
+  display:flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+}
+header figure img{
+  width: 33%;
+  margin:0;
+}
+header h1{
+  margin-top:2%;
+  font-family: Ravie;
+}
+header p {
+  padding:1%;
+  padding-bottom: 0.5%;
+  text-align:center;
+  background:rgb(251, 194, 141);
+  color:#5e3020;
+  border-radius: 3px;
+  margin-top:0.5%;
+  margin-left:0.5%;
+}
+header p a{
+  border: 1px solid #5e3020;
+  color:#5e3020;
+  display:block;
+  padding:2%;
+  margin-top:1%;
+}
+header p a:hover{
+  background:#5e3020;
+  color:rgb(251, 194, 141);
+}
+header p span{
+  display: block;
+
+}
+.login{
+  margin-top:1%;
+}
+.login input[type=submit]{
+  width:25.5%;
+}
+/*+++++++++
+ fin header
++++++++++++*/
+/*+++++++++
+ Menu lateral
++++++++++++*/
 nav{
   width: 15%;
 }
 nav span{
   margin: 0px 100px 0px 0px;
 }
+/*+++++++++
+ fin menu lateral
++++++++++++*/
+/*+++++++++
+ cuerpo principal
++++++++++++*/
 section{
   width: 80%;
   overflow:hidden;
 }
+.preguntas_comentarios{
+  display:flex;
+	flex-flow: row wrap;
+	justify-content:space-between;
+}
+
 #izquierda{
   display:inline;
 }
 #arriba{
   display:none;
-}
-.login{
-  margin-top:5%;
 }
 .contenedor, .navegador, .filtro, .listado, .listado1{
 	display:flex;
@@ -40,19 +113,35 @@ section{
 }
 .listado1 div,.listado form{
   width:49.75%;
-
 }
-
-.preguntas p, .tema p {
+ .tema p {
   padding:4%;
 }
-.preguntas{
-  text-align:left;
-
+.pre_com{
+  width:80%;
 }
-.preguntas a, .tema a, .tema button{
+.mas_preguntas{
+  width:15%;
+}
+.mas_preguntas nav{
+  width:100%;
+  border: 1px solid #5e3020;
+  padding:1%;
+}
+.mas_preguntas nav a{
+  display: block;
+  padding:1%;
+}
+.pre_com a,.preguntas a, .tema a, .tema button{
   display:block;
   padding:4%;
+}
+ul li{
+  list-style: none;
+}
+.comentarios{
+  margin-top:1%;
+  margin-bottom: 2%;
 }
 .tema button{
   padding-left: 40%;
@@ -71,6 +160,7 @@ section{
   color:#5e3020;
   background:rgb(251, 194, 141);
   padding:10px;
+  cursor:pointer;
 }
 .navegador button{
   border:1px solid #5e3020;
@@ -106,7 +196,7 @@ section{
   border-right:none;
 }
 .navegador .otro{
-  border-right: 1px solid #5e3020!important;
+  border-right: 1px solid #5e3020 ! important;
 }
 nav a{
 	display:block;
@@ -122,7 +212,14 @@ section div{
   display:inline;
 
 }
+/*+++++++++
+fin cuerpo principal
++++++++++++*/
+/*+++++++++
+footer
++++++++++++*/
 footer{
 
-  display: block;
+  display:flex;
+  justify-content:center;
 }

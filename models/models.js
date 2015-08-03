@@ -49,11 +49,11 @@ var sequelize = new Sequelize(DB_name, user, pwd,
 
         Quiz.create({ pregunta:'Capital de Italia',
                       respuesta:'Roma',
-                      tema:'humanidades'
+                      tema:'Humanidades'
                     });
         Quiz.create({ pregunta:'Capital de Portugal',
                       respuesta:'Lisboa',
-                      tema:'ocio'
+                      tema:'Ocio'
                     })
         .then(function(){console.log('Base de datos inicializada')});
       };

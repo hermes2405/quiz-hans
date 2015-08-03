@@ -1,40 +1,38 @@
-    <h3> <%= quiz.tema %></h3>
-    <form class="" action="/quizes/<%= quiz.id %>/answer" method="get">
-      <p>Pregunta: <%= quiz.pregunta %> </p>
-      <input type="text" name="respuesta" placeholder="Responda aquí" />
-      <input type="submit" value="Enviar">
-    </form>
-    <p>
-      <a href="/quizes/<%= quiz.id %>/comments/new">
-          <button>Nuevo comentario</button>
-      </a>
-    </p>
-    <p>
-      <strong>Comentarios:</strong>
-    </p>
-    <% for( index in quiz.Comments) {
-      if(quiz.Comments[index].publicado || session.user){%>
-        <p>- <%= quiz.Comments[index].texto %>
-        <% if( session.user && !quiz.Comments[index].publicado){ %>
-          <a href="/quizes/<%=quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish">
-            <button>Publicar</button>
+<div class='preguntas_comentarios'>
+  <div class='pre_com'>
+        <h3> <%= quiz.tema %></h3>
+        <form class="" action="/quizes/<%= quiz.id %>/answer" method="get">
+          <p>Pregunta: <%= quiz.pregunta %></p>
+          <input type="text" name="respuesta" placeholder="Responda aquí" />
+          <input type="submit" value="Enviar">
+        </form>
+        <p>
+          <a href="/quizes/<%= quiz.id %>/comments/new">
+              <button>Nuevo comentario</button>
           </a>
-        <% } %>
         </p>
-      <% } %>
-    <% } %>
-    <table>
-      <tr>
-        <td>
-          <h2>Preguntas de la misma temática</h2>
-        </td>
-      <% var i; for (i=0; i < tema.length; i++) { %>
-
-        <tr>
-          <td>
-            <a href="<%= tema[i].id %>"><%= tema[i].pregunta %></a>
-          </td>
-
-        </tr>
-      <% } %>
-    </table>
+        <h3 class='comentarios'>
+          <strong>Comentarios:</strong>
+        </h3>
+        <% for( index in quiz.Comments) {
+          if(quiz.Comments[index].publicado || session.user){%>
+            <hr>
+            <p class='comentarios'>- <%= quiz.Comments[index].texto %>
+            <% if( session.user && !quiz.Comments[index].publicado){ %>
+              <a href="/quizes/<%=quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish">
+                <button>Publicar</button>
+              </a>
+            <% } %>
+            </p>
+          <% } %>
+        <% } %>
+    </div>
+    <div class='mas_preguntas'>
+          <nav>
+              <h4>Preguntas de la misma temática</h4>
+              <% var i; for (i=0; i < tema.length; i++) { %>
+                <a href="<%= tema[i].id %>"><%= tema[i].pregunta %></a>
+              <% } %>
+          </nav>
+    </div>
+</div>

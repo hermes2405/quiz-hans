@@ -1,33 +1,12 @@
 <p>
 <p><label for="select" class="rem">Tema:</label>
-<select name="quiz[tema]">
-
-  <% if ( quiz.tema === "otro") { %>
-      <option  selected class="option" value="otro">Otro</option>
-  <% }else{ %>
-      <option class="option" value="otro">Otro</option>
-  <% } %>
-  <% if ( quiz.tema === "humanidades") { %>
-      <option selected class="option" value="humanidades">Humanidades</option>
-  <% }else{ %>
-      <option class="option" value="humanidades">Humanidades</option>
-  <% } %>
-  <% if ( quiz.tema === "ocio") { %>
-    <option selected class="option" value="ocio">Ocio</option>
-  <% }else{ %>
-    <option class="option" value="ocio">Ocio</option>
-  <% } %>
-  <% if ( quiz.tema === "ciencia") { %>
-    <option selected class="option" value="ciencia">Ciencia</option>
-  <% }else{ %>
-    <option class="option" value="ciencia">Ciencia</option>
-  <% } %>
-  <% if ( quiz.tema === "tecnologia") { %>
-    <option selected class="option" value="tecnologia">Tecnología</option>
-  <% }else{ %>
-      <option class="option" value="tecnologia">Tecnología</option>
-  <% } %>
-</select>
+  <select name="quiz[tema]">
+  		<option value="Otro" <% if (quiz.tema === "Otro") { %> selected <% } %> >Otro</option>
+  		<option value="Ciencia" <% if (quiz.tema === "Ciencia") { %> selected <% } %> >Ciencia</option>
+  		<option value="Humanidades" <% if (quiz.tema === "Humanidades") { %> selected <% } %> >Humanidades</option>
+  		<option value="Ocio" <% if (quiz.tema === "Ocio") { %> selected <% } %> >Ocio</option>
+  		<option value="Tecnología" <% if (quiz.tema === "Tecnología") { %> selected <% } %> >Tecnología</option>
+  	</select>
 </p>
 <p><label for="preg" class="rem">Pregunta:</label>
 <input type="text" id="preg" name="quiz[pregunta]" placeholder="<%= quiz.pregunta %>" /></p>
