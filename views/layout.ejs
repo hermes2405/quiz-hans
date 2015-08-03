@@ -19,14 +19,29 @@
 		</header>
 		<nav class='main' id='n1' role='navigation'>
 			<span><a href="/">Inicio</a></span>
-			<span><a href="/quizes/question">Preguntas</a></span>
+			<span><a href="/quizes">Preguntas</a></span>
 		</nav>
 		<section class='main' id='s1'>
-			<%- body %>
+			<% if (errors.length) {%>
+				<span id='ErrorMsgs'>
+					Corregir errores:<br>
+					<% for (var i in errors) {%>
+						<span><%= errors[i].message %></span><br>
+					<%}%>
+				</span>
+			<% } %>
+			<!-- <div>
+				<table>
+					<tr><td><a href="quizes/1">Capital de Italia</a></td></tr>
+					<tr><td><a href="quizes/2">Capital de Portugal</a></td></tr>
+				</table>
+			</div> -->
+			<div><%= body %></div>
+			
 		</section>
 
 		<footer class='main' id='f1'>
-			<a href="http://es.wikipedia.org/wiki/Quiz"></a>
+			<a href="http://es.wikipedia.org/wiki/Quiz">Que es wikipedia?</a>
 		</footer>
 	</div>
 </body>
