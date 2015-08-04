@@ -1,9 +1,14 @@
 @font-face {
-  font-family: Ravie;
-    src:url('/fonts/ravie.ttf')format('truetype');
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Ravie';
+	src: url('/fonts/RAVIE.eot');
+	src: local('☺'),
+    url('/fonts/RAVIE.woff') format('woff'),
+    url('/fonts/RAVIE.ttf') format('truetype'),
+    url('/fonts/RAVIE.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
+
 
 /*#page-wrap:after { content: "Smartphone Layout"; }*/
 
