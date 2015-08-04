@@ -1,3 +1,9 @@
+@font-face {
+  font-family: Ravie;
+    src:url('/fonts/ravie.ttf')format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -6,19 +12,48 @@ body{
 	font: 16px Georgia, serif;
 	background:rgb(244, 111, 54) !important;
 	color:#5e3020;
-	padding:3%;
+	padding:1%;
+}
+header h1{
+  margin-top:2%;
+  font-family: Ravie;
 }
 header a{
 	color:rgb(251, 194, 141);
 }
+header p a{
+  border: 1px solid rgb(251, 194, 141);
+  color:rgb(251, 194, 141);
+  display:block;
+  padding:2%;
+  margin-top:1%;
+}
+header p a:hover{
+  background:rgb(251, 194, 141);
+  color:#5e3020;
+}
 /*.tema{
 	background:rgb(244, 111, 54);
 }*/
-.contenedor{
-	height:auto ;
+.contenedor, .navegador, .filtro, .listado, .listado1{
+	display:flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.navegador{
+  justify-content: space-around;
+}
+.filtro, .listado, .listado1{
+  justify-content: space-between;
 }
 .listado1{
 	background:rgb(244, 111, 54);
+  border: 1px solid rgb(244, 111, 54);
+  flex-grow: 2;
+  width:45%;
+}
+.listado1 div,.listado form{
+  width:49.75%;
 }
 .preguntas, .tema{
 	background:rgb(251, 194, 141);
@@ -31,6 +66,7 @@ header a{
 	margin: 2% auto;
 	color:#5e3020;
 }
+
 nav h4, .mas_preguntas nav a{
 	width:100%;
 	border-bottom: 1px solid #5e3020;
@@ -59,6 +95,20 @@ button:hover, input[type='submit']:hover{
 	color:rgb(251, 194, 141);
 	background:#5e3020;
 }
+#boton_borrar{
+  width:100%;
+  font-size: 0.96em;
+  border:1px solid rgb(251, 194, 141);
+  cursor:pointer;
+}
+#boton_borrar:hover, .tema a:hover, .preguntas a:hover{
+  color:rgb(251, 194, 141);
+  background:#5e3020;
+  background:#7c5c51;
+}
+#boton_borrar:hover{
+  border:1px solid #7c5c51 ;
+}
 td button{
 	margin:2%;
 }
@@ -76,14 +126,34 @@ input:focus,input[type='password']:focus, select:focus{
 	padding: 1%;
 	margin-bottom: 1px;
 }
+#n1, section{
+	width: 100%;
+}
 #izquierda{
   display:none;
 }
 #arriba{
   display:inline;
 }
+.preguntas a, .tema a, .tema button{
+  display:block;
+  padding:4%;
+}
+.listado1 div a, .listado div p{
+  width:100%;
+  align-self:center;
+}
+.listado1 form, .listado1 div{
+  display:flex;
+}
+.comentarios{
+  margin-top:1%;
+  margin-bottom: 2%;
+  display:flex;
+  justify-content: space-between;
+}
 h2 span{
-	color:rgb(251, 194, 141);
+	color:rgb(244, 111, 54);
 }
 section > div{
 	padding: 20px;

@@ -1,6 +1,11 @@
-body             { background: #333; }
+@font-face {
+  font-family: Ravie;
+    src:url('/fonts/ravie.ttf')format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-#page-wrap:after { content: "Smartphone Layout"; }
+/*#page-wrap:after { content: "Smartphone Layout"; }*/
 
 h1 span, section h3{
   display: none;
@@ -8,9 +13,35 @@ h1 span, section h3{
 body{
   font-size: xx-large;
  }
+.inicio{
+  font-size:1em;
+  font-weight:bold;
+  padding:2%;
+  font-family:Ravie;
+}
 .contenedor{
    height:auto;
  }
+#listado{
+  display:none;
+}
+.preguntas, .editar{
+  border-bottom: 1px solid #5e3020;
+}
+nav a{
+  display:block;
+}
+#tema p{
+  font-size:0.92em ! important;
+  background: #F49D77;
+  color: #5e3020;
+}
+.preguntas {
+  order:1;
+}
+.listado1 div,.listado form{
+  width:100%;
+}
 section{
   overflow:hidden;
  }

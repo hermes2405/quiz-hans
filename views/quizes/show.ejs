@@ -1,5 +1,5 @@
 <div class='preguntas_comentarios'>
-  <div class='pre_com'>
+    <div class='pre_com'>
         <h3> <%= quiz.tema %></h3>
         <form class="" action="/quizes/<%= quiz.id %>/answer" method="get">
           <p>Pregunta: <%= quiz.pregunta %></p>
@@ -17,12 +17,12 @@
         <% for( index in quiz.Comments) {
           if(quiz.Comments[index].publicado || session.user){%>
             <hr>
-            <p class='comentarios'>- <%= quiz.Comments[index].texto %>
-            <% if( session.user && !quiz.Comments[index].publicado){ %>
-              <a href="/quizes/<%=quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish">
-                <button>Publicar</button>
-              </a>
-            <% } %>
+            <p class='comentarios'><%= quiz.Comments[index].texto %>
+              <% if( session.user && !quiz.Comments[index].publicado){ %>
+                <a href="/quizes/<%=quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish">
+                  <button>Publicar</button>
+                </a>
+              <% } %>
             </p>
           <% } %>
         <% } %>

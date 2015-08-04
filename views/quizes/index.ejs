@@ -4,8 +4,12 @@
   <input type="submit" value="Buscar"/>
 </form>
 
-
-<p>Filtro por temas</p>
+<div class="navegador">
+  <% if (session.user) {%>
+    <div></div>
+  <% } %>
+  <p>Filtro por temas</p>
+</div>
 <div class="navegador">
    <% if (session.user) {%>
     <div>
@@ -13,7 +17,7 @@
     </div>
     <% } %>
     <div class="filtro">
-    
+
     <form class="" action="" method="get">
       <input type="hidden" name="search" ></input>
       <input type="submit" class="todo" value="Todo" />
@@ -60,7 +64,7 @@
    </p>
  </div>
  <% if (quizes.length !== 0 ){%>
- <div class="listado">
+ <div class="listado" id="listado">
    <div class="listado1">
      <div class="tema titulo_preguntas">
        <p>Preguntas</p>
@@ -87,7 +91,7 @@
       <div class="preguntas">
         <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
       </div>
-      <div class="tema">
+      <div class="tema" id="tema">
         <p>
           <%= quizes[i].tema %>
         </p>
@@ -95,16 +99,14 @@
     </div>
     <% if(session.user) {%>
     <div class="listado1">
-      <div class="tema">
+      <div class="tema editar">
         <a href="quizes/<%= quizes[i].id %>/edit">Editar</a>
       </div>
-
       <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
         <button id="boton_borrar" class="tema" type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
           Borrar
         </button>
       </form>
-
     </div>
     <% } %>
   </div>
