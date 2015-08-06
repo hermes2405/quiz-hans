@@ -12,11 +12,6 @@ var routes = require('./routes/index');
 
 var app = express();
 
-// duración de la session para autologout
-var sessionEnd = 2*60*1000;
-// hora actual
-var actualTime = Date.now();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -31,14 +26,16 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Middleware para expiración de sesiones por exceso de tiempo (2 minutos) sin actividad
+//Middleware para expiración de sesiones 
 app.use(function(req, res, next) {
     if (req.session.user) {
-        var lastTimeAction = req.session.user.last
-        if (actualTime - lastTimeAction > sessionEnd) {
+        // Date.now():nos da la hora actual
+        if (Date.now() - req.session.user.lastTimeAction > 2*60*1000) {// 2*60*1000 = 2 minutos
+            //si han pasado más de dos minutos desde la última acción borramos la sesión
             delete req.session.user;
         } else {
-            lastTimeAction = Date.now();
+            //si no han pasado dos minutos desde la última acción le damos el valor de la hora actual a la última acción.
+            req.session.user.lastTimeAction = Date.now();
         }
     }
 next();
