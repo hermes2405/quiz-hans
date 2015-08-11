@@ -1,0 +1,11 @@
+<label for="preg" class="rem">Username:</label>
+<p><input type="text" id="username" name="user[username]" value="<%= user.username %>"/></p>
+<label for="resp" class="rem">Password:</label>
+<p><input type="password" id="pass" name="user[password]"/> </p>
+<p><% if (session.user){%>
+    <img class="user_img" src="/media/user/<%= user.image %>">
+<% } %>
+  <label for="image" class="rem">Imagen:</label>
+<input type="file" accept="image/*" id="image" name="imagen"/></p>
+<a href="/"><button type="button">Cancelar</button></a>
+<input type="submit" value="Enviar">

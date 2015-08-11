@@ -1,0 +1,69 @@
+<div class='preguntas_comentarios'>
+    <div class='pre_com'>
+        <h3> <%= quiz.tema %></h3>
+        <%if (quiz.image){%>
+            <p><img class="quiz_img" src="/media/quizes/<%= quiz.image %>"></p>
+        <% } %>
+        <form class="" action="/quizes/<%= quiz.id %>/answer" method="get">
+          <p>Pregunta: <%= quiz.pregunta %></p>
+          <input type="text" name="respuesta" placeholder="Responda aquí" />
+          <input type="submit" value="Enviar">
+        </form>
+        <% if(session.user) {%>
+            <p>
+              <a href="/quizes/<%= quiz.id %>/comments/new">
+                <button>Nuevo comentario</button>
+              </a>
+            </p>
+        <% }else{%>
+            <p>  Logueate para hacer un comentario. </p>
+        <% } %>
+        <h3 class='comentarios'>
+          <strong>Comentarios:</strong>
+        </h3>
+          <% if (quiz.Comments.length === 0){ %>
+              <hr>
+              <p>No hay ningún comentario sobre esta pregunta</p>
+          <%}else{
+              for( index in quiz.Comments) {
+                  if(quiz.Comments[index].publicado){%>
+                    <hr>
+                    <p class="autor_comentario">
+                        <%if (quiz.Comments[index].image_user){%>
+                            <img class="comment_img" src="/media/user/<%= quiz.Comments[index].image_user %>">
+                        <% } %>
+                        <strong><%= quiz.Comments[index].username %></strong>
+                    </p>
+                    <div class='comentarios'><%= quiz.Comments[index].texto %>
+                      <% if( session.user && (session.user.isAdmin || (session.user && quiz.Comments[index].UserId === session.user.id))){ %>
+                       <form class="eliminar" method="post" action="/quizes/<%=quiz.id %>/comments/<%=quiz.Comments[index].id%>/destroy?_method=delete">
+                          <button  type="submit" onClick="return confirm('Borrar comentario:  <%=quiz.Comments[index].texto%>');">
+                            Eliminar
+                          </button>
+                        </form>
+                      <% } %>
+                    </div>
+              <% }else{%>
+                  <%if (session.user){
+                      if( quiz.Comments[index].UserId === session.user.id ){ %>
+                        <hr>
+                          <p class='comentarios'><%= quiz.Comments[index].texto %>
+                            <a href="/quizes/<%=quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish">
+                              <button>Publicar</button>
+                            </a>
+                          </p>
+                      <% }%>
+                    <% } %>
+                <% } %>
+            <% } %>
+          <% } %>
+    </div>
+    <div class='mas_preguntas'>
+          <nav>
+              <h4>Preguntas de la misma temática</h4>
+              <% var i; for (i=0; i < tema.length; i++) { %>
+                <a href="<%= tema[i].id %>"><%= tema[i].pregunta %></a>
+              <% } %>
+          </nav>
+    </div>
+</div>

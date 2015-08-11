@@ -1,0 +1,165 @@
+@font-face {
+	font-family: 'Ravie';
+	src: url('fonts/RAVIE.eot');
+	src: local('☺'),
+    url('fonts/RAVIE.woff') format('woff'),
+    url('fonts/RAVIE.ttf') format('truetype'),
+    url('fonts/RAVIE.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*#page-wrap:after { content: "Wide cambiando"; }*/
+
+/*+++++++++
+ header
++++++++++++*/
+header{
+  display:flex;
+	flex-flow: row wrap;
+	justify-content:space-between;
+}
+header figure{
+  margin:0;
+  display:flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+}
+header figure img{
+  width: 33%;
+  margin:0;
+}
+
+header p {
+  padding:1%;
+  padding-bottom: 0.5%;
+  text-align:center;
+  background:#5e3020;
+  color:rgb(251, 194, 141);
+  border-radius: 3px;
+  margin-top:0.5%;
+  margin-left:0.5%;
+}
+
+header p span{
+  display: block;
+
+}
+.login{
+  margin-top:1%;
+}
+.login input[type=submit]{
+  width:25.5%;
+}
+/*+++++++++
+ fin header
++++++++++++*/
+/*+++++++++
+ Menu lateral
++++++++++++*/
+#n1{
+  width: 15%;
+}
+nav span{
+  margin: 0px 100px 0px 0px;
+}
+/*+++++++++
+ fin menu lateral
++++++++++++*/
+/*+++++++++
+ cuerpo principal
++++++++++++*/
+section{
+  width: 80%;
+  overflow:hidden;
+}
+.preguntas_comentarios{
+  display:flex;
+	flex-flow: row wrap;
+	justify-content:space-between;
+}
+
+#izquierda{
+  display:inline;
+}
+#arriba{
+  display:none;
+}
+.tema p {
+  padding:4%;
+}
+.pre_com{
+  width:80%;
+}
+.mas_preguntas{
+  width:15%;
+}
+.mas_preguntas nav{
+  width:100%;
+  border: 1px solid #5e3020;
+  padding:1%;
+}
+.mas_preguntas nav a{
+  display: block;
+  padding:1%;
+}
+ul li{
+  list-style: none;
+}
+.tema button{
+  padding-left: 40%;
+  padding-right:40%;
+  font-size:1.05em;
+  display:inline-block;
+}
+.tema{
+  text-align:center;
+}
+.navegador button, .navegador input[type='submit']{
+  border-top: 1px solid #5e3020;
+  border-left: 1px solid #5e3020;
+  border-bottom: 1px solid #5e3020;
+  border-right:none;
+  color:#5e3020;
+  background:rgb(251, 194, 141);
+  padding:10px;
+  cursor:pointer;
+}
+.navegador button{
+  border:1px solid #5e3020;
+}
+.navegador button:hover, .navegador input[type='submit']:hover{
+  color:rgb(251, 194, 141);
+  background:#5e3020;
+}
+.navegador .todo{
+  border-right:none;
+}
+.navegador .otro{
+  border-right: 1px solid #5e3020 ! important;
+}
+nav a{
+	display:block;
+}
+section figure{
+
+  display:inline;
+}
+section figure img{
+  width:10%;
+}
+section div{
+  display:inline;
+
+}
+/*+++++++++
+fin cuerpo principal
++++++++++++*/
+/*+++++++++
+footer
++++++++++++*/
+footer{
+
+  display:flex;
+  justify-content:center;
+}

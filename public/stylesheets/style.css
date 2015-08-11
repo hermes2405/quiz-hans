@@ -1,8 +1,242 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@font-face {
+	font-family: 'Ravie';
+	src: url('/fonts/RAVIE.eot');
+	src: local('☺'),
+    url('/fonts/RAVIE.woff') format('woff'),
+    url('/fonts/RAVIE.ttf') format('truetype'),
+    url('/fonts/RAVIE.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+body{
+	font: 16px Georgia, serif;
+	background:rgb(244, 111, 54) !important;
+	color:#5e3020;
+	padding:1%;
+}
+header h1{
+  margin-top:2%;
+  font-family: Ravie;
+}
+header a{
+	color:rgb(251, 194, 141);
+}
+header p a{
+  border: 1px solid rgb(251, 194, 141);
+  color:rgb(251, 194, 141);
+  display:block;
+  padding:2%;
+  margin-top:1%;
+}
+header p a:hover{
+  background:rgb(251, 194, 141);
+  color:#5e3020;
+}
+/*.tema{
+	background:rgb(244, 111, 54);
+}*/
+.contenedor, .navegador, .filtro, .listado, .listado1{
+	display:flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.navegador{
+  justify-content: space-around;
+}
+.filtro, .listado, .listado1{
+  justify-content: space-between;
+}
+.listado1{
+	background:rgb(244, 111, 54);
+  border: 1px solid rgb(244, 111, 54);
+  flex-grow: 2;
+  width:45%;
+}
+.listado1 div,.listado form{
+  width:49.75%;
+}
+.preguntas, .tema{
+	background:rgb(251, 194, 141);
+}
+.titulo_preguntas{
+	background:#F49D77;
+	color:#5e3020;
+}
+.autor_comentario{
+	text-align:left;
+}
+.comment_img{
+	width: 7%;
+	margin-top: 1%;
+	margin-right: 1%;
+}
+#page-wrap{
+	margin: 2% auto;
+	color:#5e3020;
 }
 
-a {
-  color: #00B7FF;
+nav h4, .mas_preguntas nav a{
+	width:100%;
+	border-bottom: 1px solid #5e3020;
+}
+nav h4{
+	color:rgb(244, 111, 54);
+}
+input[type='text'], select, input[type='password']{
+	color:#5e3020;
+	padding: 1%;
+	border: 1px solid #5e3020;
+	margin:1%;
+}
+button, input[type='submit'] {
+  border: 1px solid #5e3020;
+  color:#5e3020;
+  background:rgb(251, 194, 141);
+  padding:10px;
+}
+.tema button{
+	border:0;
+	background:none;
+	padding:0;
+}
+button:hover, input[type='submit']:hover{
+	color:rgb(251, 194, 141);
+	background:#5e3020;
+}
+#boton_borrar{
+  width:100%;
+  font-size: 0.96em;
+  border:1px solid rgb(251, 194, 141);
+  cursor:pointer;
+}
+#boton_borrar:hover, .tema a:hover, .preguntas a:hover{
+  color:rgb(251, 194, 141);
+  background:#5e3020;
+  background:#7c5c51;
+}
+#boton_borrar:hover{
+  border:1px solid #7c5c51 ;
+}
+td button{
+	margin:2%;
+}
+td{
+	padding-top:2%;
+	padding-buttom:2%;
+}
+
+input:focus,input[type='password']:focus, select:focus{
+	outline:none;
+	border: 1px solid rgb(244, 111, 54);
+}
+#page-wrap > .main, .contenedor > .main{
+	border: 1px solid #5e3020;
+	padding: 1%;
+	margin-bottom: 1px;
+}
+#n1, section{
+	width: 100%;
+}
+#izquierda{
+  display:none;
+}
+#arriba{
+  display:inline;
+}
+.respuesta{
+	margin-top:2%;
+}
+.respuesta h3{
+	font-size:2em;
+}
+.boton_volver{
+	margin-top:2%;
+}
+.preguntas a, .tema a, .tema button{
+  display:block;
+  padding:4%;
+}
+.listado1 div a, .listado div p{
+  width:100%;
+  align-self:center;
+}
+.listado1 form, .listado1 div{
+  display:flex;
+}
+.comentarios{
+  margin-top:1%;
+  margin-bottom: 2%;
+  display:flex;
+  justify-content: space-between;
+}
+h2 span{
+	color:rgb(244, 111, 54);
+}
+section > div{
+	padding: 20px;
+}
+header, nav, section {
+	background: #eee;
+	background:rgb(251, 194, 141);
+	text-align: center;
+	overflow:hidden;
+}
+header, footer {
+	background:#5e3020 ! important;
+	color:rgb(251, 194, 141) ! important;
+	text-align: center;
+}
+footer {
+	clear:both;
+}
+a{
+	text-decoration: none;
+	color:#5e3020;
+}
+nav a{
+	display:inline;
+	padding:2%;
+}
+nav a:hover{
+	background:#5e3020;
+	color:rgb(251, 194, 141);sc
+}
+.contenedor{
+   height:auto;
+ }
+figure{
+	margin-top:2%;
+}
+img{
+	width:20%;
+	margin:0 auto;
+}
+video{
+	margin-top: 5%;
+	margin-left: 5%;
+}
+nav span{
+	margin: 0 10px 0 0;
+}
+#ErrorMsgs{
+	color:rgb(236, 41, 70);
+	font-size:smaler;
+}
+td a{
+	border-bottom:1px solid transparent;
+}
+td a:hover{
+	border-bottom:1px solid #5e3020;
+}
+footer a{
+	color:rgb(251, 194, 141) ! important;
+	margin-right:20px;
+	border-bottom:1px solid transparent;
+}
+footer a:hover{
+	border-bottom:1px solid rgb(251, 194, 141);
 }
