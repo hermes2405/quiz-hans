@@ -1,26 +1,29 @@
 <div class='preguntas_comentarios'>
     <div class='pre_com'>
-        <h3> <%= quiz.tema %></h3>
         <%if (quiz.image){%>
-            <p><img class="quiz_img" src="/media/quizes/<%= quiz.image %>"></p>
+            <p><img class="quiz_img margen" src="/media/quizes/<%= quiz.image %>"></p>
         <% } %>
-        <form class="" action="/quizes/<%= quiz.id %>/answer" method="get">
-          <p>Pregunta: <%= quiz.pregunta %></p>
-          <input type="text" name="respuesta" placeholder="Responda aquí" />
-          <input type="submit" value="Enviar">
+        <h3> <%= quiz.tema %></h3>
+
+        <form class="margen" action="/quizes/<%= quiz.id %>/answer" method="get">
+          <h2> <%= quiz.pregunta %></h2>
+          <input class="margen" type="text" name="respuesta" placeholder="Responda aquí" />
+          <input class="margen" type="submit" value="Enviar">
         </form>
         <% if(session.user) {%>
-            <p>
+            <p class="margen">
               <a href="/quizes/<%= quiz.id %>/comments/new">
                 <button>Nuevo comentario</button>
               </a>
             </p>
         <% }else{%>
-            <p>  Logueate para hacer un comentario. </p>
+            <p class="margen">  Logueate para hacer un comentario. </p>
         <% } %>
-        <h3 class='comentarios'>
-          <strong>Comentarios:</strong>
-        </h3>
+
+          <h2  class='margenes'>
+            <strong>Comentarios:</strong>
+          </h2>
+
           <% if (quiz.Comments.length === 0){ %>
               <hr>
               <p>No hay ningún comentario sobre esta pregunta</p>
@@ -28,21 +31,41 @@
               for( index in quiz.Comments) {
                   if(quiz.Comments[index].publicado){%>
                     <hr>
-                    <p class="autor_comentario">
+                    <div class='comentarios'>
+                    <div class="autor_comentario">
                         <%if (quiz.Comments[index].image_user){%>
                             <img class="comment_img" src="/media/user/<%= quiz.Comments[index].image_user %>">
                         <% } %>
-                        <strong><%= quiz.Comments[index].username %></strong>
-                    </p>
-                    <div class='comentarios'><%= quiz.Comments[index].texto %>
-                      <% if( session.user && (session.user.isAdmin || (session.user && quiz.Comments[index].UserId === session.user.id))){ %>
-                       <form class="eliminar" method="post" action="/quizes/<%=quiz.id %>/comments/<%=quiz.Comments[index].id%>/destroy?_method=delete">
-                          <button  type="submit" onClick="return confirm('Borrar comentario:  <%=quiz.Comments[index].texto%>');">
-                            Eliminar
-                          </button>
-                        </form>
-                      <% } %>
+                        <p>
+                          <strong>
+                            <%= quiz.Comments[index].username %>
+                          </strong><br>
+                          <span class="alta">
+                            <span>Fecha de alta:</span></br>
+                            <span> <%= moment(quiz.Comments[index].creado).format(shortDateFormat)%></span>
+                          </span>
+                        </p>
                     </div>
+                    <div class='ft_comentarios'>
+                      <p class='fecha'>
+                        <strong>Publicado:</strong>
+                        <span><%= moment(quiz.Comments[index].updatedAt).format(shortDateFormat)%></span>
+                        <span class='hora'><%= moment(quiz.Comments[index].updatedAt).format(shortDateFormat2)%></span>
+                      </p>
+                      <p class="texto_comentarios">
+                        <%= quiz.Comments[index].texto %>
+                      </p>
+                     </div>
+                     <div class='borrar_comentario'>
+                        <% if( session.user && (session.user.isAdmin || (session.user && quiz.Comments[index].UserId === session.user.id))){ %>
+                          <form class="eliminar" method="post" action="/quizes/<%=quiz.id %>/comments/<%=quiz.Comments[index].id%>/destroy?_method=delete">
+                            <button  type="submit" onClick="return confirm('Borrar comentario:  <%=quiz.Comments[index].texto%>');">
+                              Eliminar
+                            </button>
+                          </form>
+                       <% } %>
+                    </div>
+                  </div>
               <% }else{%>
                   <%if (session.user){
                       if( quiz.Comments[index].UserId === session.user.id ){ %>

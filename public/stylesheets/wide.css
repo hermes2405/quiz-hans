@@ -40,8 +40,10 @@ header p {
   margin-top:0.5%;
   margin-left:0.5%;
 }
-
-header p span{
+header p span br{
+	display:none;
+}
+header p span, header p a{
   display: block;
 
 }

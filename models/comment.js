@@ -12,6 +12,9 @@ module.exports = function(sequelize, DataTypes) {
       image_user:{
         type: DataTypes.STRING
       },
+      creado:{
+        type: DataTypes.DATE
+      },
       publicado: {
       	type: DataTypes.BOOLEAN,
       	defaultValue: false

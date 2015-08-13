@@ -28,6 +28,7 @@ exports.load = function(req, res, next, userId) {
   ).catch(function(error){next(error)});
 };
 
+
 // Comprueba si el usuario esta registrado en users
 // Si autenticación falla o hay errores se ejecuta callback(error).
 exports.autenticar = function(login, password, callback) {
@@ -48,7 +49,8 @@ exports.autenticar = function(login, password, callback) {
 
 // GET /user/:id/edit
 exports.edit = function(req, res) {
-  res.render('user/edit', { user: req.user, errors: []});
+  var user = req.user
+  res.render('user/edit', { user: user, errors: []});
 };            // req.user: instancia de user cargada con autoload
 
 // GET /user
@@ -74,9 +76,8 @@ exports.create = function(req, res) {
             } else {
                 user // save: guarda en DB campos username y password de user
                 .save({fields: ["username", "password", "image"]})
-                .then( function(){
-                    // crea la sesión para que el usuario acceda ya autenticado y redirige a /
-                    req.session.user = {id:user.id, username:user.username, image:user.image};
+                .then( function(){                    // crea la sesión para que el usuario acceda ya autenticado y redirige a /
+                    req.session.user = {id:user.id, username:user.username, image:user.image, creado:createdAt, isAdmin:user.isAdmin};
                     res.redirect('/');
                 });
             }
@@ -88,9 +89,9 @@ exports.create = function(req, res) {
 exports.update = function(req, res, next) {
   req.user.username  = req.body.user.username;
   req.user.password  = req.body.user.password;
-  req.user.image = req.body.user.image;
+
   if ( req.file ){
-        req.body.user.image = req.file.filename;
+        req.user.image = req.file.filename;
   }
   req.user
   .validate()
@@ -101,8 +102,41 @@ exports.update = function(req, res, next) {
       } else {
         req.user     // save: guarda campo username y password en DB
         .save( {fields: ["username", "password", "image"]})
-        .then( function(){ res.redirect('/');});
-      }     // Redirección HTTP a /
+        .then( function(){
+            var login = req.body.user.username;<<<
+            var password = req.body.user.password;
+
+            var userController = require('./user_controller');
+            userController.autenticar(login, password, function(error, user){
+
+              if (error) { // si hay error retornamos mensajes de error de sesión
+                req.session.errors = [{'message': 'Se ha producido un error: '+error}];
+                res.redirect("/login");
+                return;
+              }
+
+              // Crear req.session.userr y guaradr campos id y username
+              // La sesión se define por la existencia de: req.session.user
+              req.session.user = {id:user.id, username:user.username, image:user.image, isAdmin:user.isAdmin};
+              models.Comment.find({
+                    where:{
+                        UserId: Number(req.session.user.id)
+                      }
+                    }).then(function(comment){
+                      console.log (imagen)
+                      if (comment){
+                        for (index in comment){
+                        comment[index].image_user = user.image;
+                        (comment[index].image_user).save()// save: guarda en DB campo imagen de comment
+                        next();
+                      }
+                      }else{ next(new Error('No existe commentId=' + commentId))}
+                }
+              ).catch(function(error){next(error)});
+              res.redirect('/'); // Redirección HTTP a /
+            });
+         });
+      }
     }
   ).catch(function(error){next(error)});
 };

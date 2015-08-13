@@ -47,6 +47,23 @@ exports.new = function(req, res){
 };
 
 //POST /quizes/:quizId/comments
+exports.imagen = function(req, res){
+  models.Comment.find({
+        where:{
+            UserId: Number(req.session.user.id)
+          }
+        }).then(function(comment){
+          if (comment){
+
+            req.comment.imageUser = req.user.image;
+            comment.image_user // save: guarda en DB campo texto de comment
+            .save()
+            next();
+          }else{ next(new Error('No existe commentId=' + commentId))}
+    }
+  ).catch(function(error){next(error)});
+};
+
 
 exports.create = function(req, res){
   var comment = models.Comment.build(
@@ -54,7 +71,8 @@ exports.create = function(req, res){
       username: req.session.user.username,
       QuizId: req.params.quizId,
       UserId: req.session.user.id,
-      image_user: req.session.user.image
+      image_user: req.session.user.image,
+      creado: req.session.user.creado
     });
 
   comment

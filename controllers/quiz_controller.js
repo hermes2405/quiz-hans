@@ -24,7 +24,6 @@ exports.load = function(req, res, next, quizId) {
       }).then(
     function(quiz){
       if (quiz){
-
         req.quiz = quiz;
         next();
       }else{ next(new Error('No existe quizId=' + quizId));}
@@ -134,8 +133,8 @@ exports.create = function(req, res){
 // GET quizes/:id/edit
 exports.edit = function(req, res){
   var quiz = req.quiz; // autoload de instancia de quiz
-
-  res.render('quizes/edit', {quiz: quiz, errors: []});
+ var image = req.quiz.image
+  res.render('quizes/edit', {quiz: quiz,image: image, errors: []});
 };
 
 // PUT /quizes/:id
@@ -144,10 +143,9 @@ exports.update = function(req, res) {
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
   req.quiz.tema = req.body.quiz.tema;
-  req.quiz.image = req.body.quiz.image;
-  if(req.file){
-    req.quiz.image = req.file.name;
-  }
+  req.quiz.image = req.file.filename;
+
+
   req.quiz
   .validate()
   .then(
@@ -156,7 +154,7 @@ exports.update = function(req, res) {
         res.render('quizes/edit',{quiz: req.quiz, errors: err.errors});
       }else{
         req.quiz
-        .save( {fields:["UserId","pregunta", "image","respuesta", "tema"]}) // save: guarda campos pregunta y respuesta en DB
+        .save( {fields:["UserId","pregunta","respuesta","image","tema"]}) // save: guarda campos pregunta y respuesta en DB
         .then( function(){res.redirect('/quizes')});
       }// Redireccion HTTP a lista de preguntas (URL relative)
     }

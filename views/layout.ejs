@@ -22,13 +22,13 @@
         </figure>
         <h1>Quiz<span>: el juego de las preguntas</span></h1>
         <% if(!session.user) { %>
-          <p class="right"><span>Usuario: no logueado</span><br><span><a href="/login">Login</a><a href='/user'>Registrate</a></span></p>
+          <p class="right"><span>Usuario: no logueado</span><br><span><a href="/login">Login</a><br><a href='/user'>Registrate</a></span></p>
         <% }else{ %>
           <p class="right">
             <%if (session.user.image){%>
-                <img class="user_img" src="/media/user/<%=session.user.image %>">
+                <img class="" src="/media/user/<%=session.user.image %>">
             <% } %>
-            <span>Usuario: <%=session.user.username%></span><br><span><a href="/user/<%=session.user.id%>/edit">Editar</a><a href="/logout">Logout</a></span>
+            <span>Usuario: <%=session.user.username%></span><br><span><a href="/user/<%=session.user.id%>/edit">Editar</a><br><a href="/logout">Logout</a></span>
           </p>
         <% } %>
       </header>

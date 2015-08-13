@@ -41,6 +41,10 @@ nav a{
   background: #F49D77;
   color: #5e3020;
 }
+.respuesta h3{
+	font-size:1em;
+	display:block;
+}
 .quiz_img{
 	float:none;
 }
@@ -56,3 +60,6 @@ section{
 input, footer{
   font-size: large;
   }
+footer{
+	clear:both;
+}

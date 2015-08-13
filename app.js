@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var partials = require('express-partials');
 var methodOverride = require('method-override')
 var session = require('express-session');
+var ejs = require('ejs');
+var moment = require('moment');
 
 var routes = require('./routes/index');
 
@@ -26,6 +28,14 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+var shortDateFormat = "DD-MM-gggg ";
+var shortDateFormat2 = "HH:mm"// this is just an example of storing a date format once so you can change it in one place and have it propagate
+app.locals.moment = moment; // this makes moment available as a variable in every EJS page
+app.locals.shortDateFormat = shortDateFormat;
+app.locals.shortDateFormat2 = shortDateFormat2;
+/*app.locals.fromNow = function(date){
+  return moment(date).fromNow();
+}*/
 //Middleware para expiración de sesiones
 app.use(function(req, res, next) {
     if (req.session.user) {

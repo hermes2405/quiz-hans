@@ -1,11 +1,57 @@
 <h2>Página de estadísticas</h2>
+<div class="listado">
+<div class="listado1">
+  <div class="tema titulo_preguntas">
+    Preguntas:
+  </div>
+  <div class="tema preguntas">
+     <%= statistics.numQuizes %>
+  </div>
+</div>
 
- <ul>
-   <li>Preguntas: <%= statistics.numQuizes %></li>
-   <li>Comentarios totales: <%= statistics.numComments %></li>
-   <li>Comentarios no publicados: <%= statistics.numNoCommentedQuizes %>
-     (<%= statistics.numComments?(statistics.numNoCommentedQuizes * 100 / statistics.numComments).toFixed(2)+'%':'100%' %>)</li>
-   <li>Media de comentarios por pregunta: <%= statistics.numQuizes?(statistics.numComments / statistics.numQuizes).toFixed(2):0 %></li>
-   <li>Preguntas sin comentarios: <%= statistics.numQuizes - statistics.numCommentedQuizes %></li>
-  <li>Preguntas con comentarios: <%= statistics.numCommentedQuizes %></li>
-</ul>
+<div class="listado1">
+  <div class="tema titulo_preguntas">
+    Comentarios totales:
+  </div>
+  <div class="tema preguntas">
+    <%= statistics.numComments %>
+  </div>
+</div>
+
+<div class="listado1">
+  <div class="tema titulo_preguntas">
+    Comentarios no publicados:
+  </div>
+  <div class="tema preguntas">
+    <%= statistics.numNoCommentedQuizes %>
+    (<%= statistics.numComments?(statistics.numNoCommentedQuizes * 100 / statistics.numComments).toFixed(2)+'%':'100%' %>)
+  </div>
+</div>
+
+<div class="listado1">
+  <div class="tema titulo_preguntas">
+    Media de comentarios por pregunta:
+  </div>
+  <div class="tema">
+    <%= statistics.numQuizes?(statistics.numComments / statistics.numQuizes).toFixed(2):0 %>
+  </div>
+</div>
+
+<div class="listado1">
+  <div class="tema titulo_preguntas">
+    Preguntas sin comentarios:
+  </div>
+  <div class="tema preguntas">
+    <%= statistics.numQuizes - statistics.numCommentedQuizes %></li>
+  </div>
+</div>
+
+<div class="listado1">
+  <div class="tema titulo_preguntas">
+    Preguntas con comentarios:
+  </div>
+  <div class="tema preguntas">
+    <%= statistics.numCommentedQuizes %>
+  </div>
+</div>
+</div>
