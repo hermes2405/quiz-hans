@@ -123,7 +123,7 @@ exports.update = function(req, res, next) {
                         UserId: Number(req.session.user.id)
                       }
                     }).then(function(comment){
-                      console.log (imagen)
+                      console.log (imagen);
                       if (comment){
                         for (index in comment){
                         comment[index].image_user = user.image;
