@@ -31,7 +31,6 @@ header p a{
   display:inline-block;
   padding:2%;
   margin-top:1%;
-
 }
 
 header p a:hover{
@@ -148,6 +147,7 @@ input:focus,input[type='password']:focus, select:focus{
 #arriba{
   display:inline;
 }
+
 .respuesta{
 	margin-top:2%;
 }
@@ -157,9 +157,17 @@ input:focus,input[type='password']:focus, select:focus{
 .boton_volver{
 	margin-top:2%;
 }
+
 .preguntas a, .tema a, .tema button{
   display:block;
   padding:4%;
+}
+.stat{
+	padding:2%;
+	font-size: 1.2em;
+}
+.stat span{
+	margin:0 auto;
 }
 .listado1 div a, .listado div p{
   width:100%;
@@ -204,12 +212,14 @@ input:focus,input[type='password']:focus, select:focus{
 	width:75px;
 	margin-top: 1%;
 	margin-right: 1%;
-
 }
 .user_img{
 	vertical-align: sub;
 	margin-right:2%;
 	width:100px;
+}
+.respuesta_img{
+	width: 150px;
 }
 h2 span{
 	color:rgb(244, 111, 54);

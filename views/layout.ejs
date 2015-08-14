@@ -27,7 +27,9 @@
           <p class="right">
             <%if (session.user.image){%>
                 <img class="" src="/media/user/<%=session.user.image %>">
-            <% } %>
+            <% }else{%>
+                <img class="comment_img" src="/images/defecto.png" />  
+            <%}%>
             <span>Usuario: <%=session.user.username%></span><br><span><a href="/user/<%=session.user.id%>/edit">Editar</a><br><a href="/logout">Logout</a></span>
           </p>
         <% } %>

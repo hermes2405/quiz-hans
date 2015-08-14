@@ -73,14 +73,19 @@ exports.index = function(req, res) {
 };
 
 // GET /quizes/:id
-exports.show = function(req, res) {
+exports.show = function(req, res, UserId) {
+  var usuario=models.User.find({
+        where:{
+            id: Number(UserId)
+          }
+  });
   var preguntaTema = req.quiz.tema
   var options = {};
   options.where = {tema: preguntaTema}
   tema = models.Quiz.findAll(options);
   tema.then(
     function(tema){
-      res.render('quizes/show',{quiz:req.quiz, tema:tema, errors: []});
+      res.render('quizes/show',{quiz:req.quiz, tema:tema, usuario:usuario, errors: []});
     }
   ).catch(function(error){next(error);});
     //res.render('quizes/show',{quiz:req.quiz, ocio:ocio, errors: []});
@@ -144,8 +149,6 @@ exports.update = function(req, res) {
   req.quiz.respuesta = req.body.quiz.respuesta;
   req.quiz.tema = req.body.quiz.tema;
   req.quiz.image = req.file.filename;
-
-
   req.quiz
   .validate()
   .then(

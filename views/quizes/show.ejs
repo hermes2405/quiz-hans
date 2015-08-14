@@ -32,20 +32,22 @@
                   if(quiz.Comments[index].publicado){%>
                     <hr>
                     <div class='comentarios'>
-                    <div class="autor_comentario">
-                        <%if (quiz.Comments[index].image_user){%>
-                            <img class="comment_img" src="/media/user/<%= quiz.Comments[index].image_user %>">
-                        <% } %>
-                        <p>
-                          <strong>
-                            <%= quiz.Comments[index].username %>
-                          </strong><br>
-                          <span class="alta">
-                            <span>Fecha de alta:</span></br>
-                            <span> <%= moment(quiz.Comments[index].creado).format(shortDateFormat)%></span>
-                          </span>
-                        </p>
-                    </div>
+                      <div class="autor_comentario">
+                          <%if (quiz.Comments[index].image_user){%>
+                              <img class="comment_img" src="/media/user/<%= quiz.Comments[index].image_user %>" />
+                          <% }else{%>
+                              <img class="comment_img" src="/images/defecto.png" />
+                          <%} %>
+                          <p>
+                            <strong>
+                              <%= quiz.Comments[index].username %>
+                            </strong><br>
+                            <span class="alta">
+                              <span>Fecha de alta:</span></br>
+                              <span> <%= moment(quiz.Comments[index].creado).format(shortDateFormat)%></span>
+                            </span>
+                          </p>
+                      </div>
                     <div class='ft_comentarios'>
                       <p class='fecha'>
                         <strong>Publicado:</strong>
@@ -70,11 +72,34 @@
                   <%if (session.user){
                       if( quiz.Comments[index].UserId === session.user.id ){ %>
                         <hr>
-                          <p class='comentarios'><%= quiz.Comments[index].texto %>
-                            <a href="/quizes/<%=quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish">
-                              <button>Publicar</button>
-                            </a>
+                        <div class='comentarios'>
+                        <div class="autor_comentario">
+                            <%if (quiz.Comments[index].image_user){%>
+                                <img class="comment_img" src="/media/user/<%= quiz.Comments[index].image_user %>" />
+                            <% }else{%>
+                                <img class="comment_img" src="/images/defecto.png" />
+                            <%} %>
+                            <p>
+                              <strong>
+                                <%= quiz.Comments[index].username %>
+                              </strong><br>
+                              <span class="alta">
+                                <span>Fecha de alta:</span></br>
+                                <span> <%= moment(quiz.Comments[index].creado).format(shortDateFormat)%></span>
+                              </span>
+                            </p>
+                        </div>
+                          <div class='ft_comentarios'>
+                          <p class="texto_comentarios">
+                            <%= quiz.Comments[index].texto %>
                           </p>
+                        </div>
+                        <div class='borrar_comentario'>
+                          <a class='eliminar' href="/quizes/<%=quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish">
+                            <button>Publicar</button>
+                          </a>
+                        </div>
+                        </div>
                       <% }%>
                     <% } %>
                 <% } %>

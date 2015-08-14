@@ -77,7 +77,7 @@ exports.create = function(req, res) {
                 user // save: guarda en DB campos username y password de user
                 .save({fields: ["username", "password", "image"]})
                 .then( function(){                    // crea la sesión para que el usuario acceda ya autenticado y redirige a /
-                    req.session.user = {id:user.id, username:user.username, image:user.image, creado:createdAt, isAdmin:user.isAdmin};
+                    req.session.user = {id:user.id, username:user.username, image:user.image, creado:user.createdAt, isAdmin:user.isAdmin};
                     res.redirect('/');
                 });
             }
@@ -89,10 +89,9 @@ exports.create = function(req, res) {
 exports.update = function(req, res, next) {
   req.user.username  = req.body.user.username;
   req.user.password  = req.body.user.password;
-
   if ( req.file ){
-        req.user.image = req.file.filename;
-  }
+        req.user.image = req.file.filename
+  };
   req.user
   .validate()
   .then(
@@ -100,39 +99,33 @@ exports.update = function(req, res, next) {
       if (err) {
         res.render('user/' + req.user.id, {user: req.user, errors: err.errors});
       } else {
-        req.user     // save: guarda campo username y password en DB
+        req.user     // save: guarda campo username, password y imagen si existe en DB
         .save( {fields: ["username", "password", "image"]})
         .then( function(){
-            var login = req.body.user.username;<<<
+            var login = req.body.user.username;
             var password = req.body.user.password;
-
             var userController = require('./user_controller');
             userController.autenticar(login, password, function(error, user){
-
               if (error) { // si hay error retornamos mensajes de error de sesión
                 req.session.errors = [{'message': 'Se ha producido un error: '+error}];
                 res.redirect("/login");
                 return;
               }
-
-              // Crear req.session.userr y guaradr campos id y username
-              // La sesión se define por la existencia de: req.session.user
-              req.session.user = {id:user.id, username:user.username, image:user.image, isAdmin:user.isAdmin};
-              models.Comment.find({
+              req.session.user = {id:user.id, username:user.username, image:user.image, creado:user.createdAt, isAdmin:user.isAdmin};
+              models.Comment.findAll({
                     where:{
-                        UserId: Number(req.session.user.id)
+                        UserId: Number(user.id)
                       }
                     }).then(function(comment){
-                      console.log (imagen);
                       if (comment){
                         for (index in comment){
-                        comment[index].image_user = user.image;
-                        (comment[index].image_user).save()// save: guarda en DB campo imagen de comment
+                            comment[index].image_user = user.image;
+                            comment[index].save({fields: ["image_user"]})
+                            }
                         next();
-                      }
                       }else{ next(new Error('No existe commentId=' + commentId))}
-                }
-              ).catch(function(error){next(error)});
+                    }
+                  ).catch(function(error){next(error)});
               res.redirect('/'); // Redirección HTTP a /
             });
          });
