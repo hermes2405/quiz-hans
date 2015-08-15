@@ -20,7 +20,7 @@ exports.load = function(req, res, next, quizId) {
 
   models.Quiz.find({
           where: { id: Number(quizId) },
-          include: [{ model: models.Comment}]
+          include: [{ model: models.Comment }]
       }).then(
     function(quiz){
       if (quiz){
@@ -67,7 +67,7 @@ exports.index = function(req, res) {
   var temas=['Humanidades','Ocio','Tecnología','Ciencia','Otro'];
   quizes.then(
     function(quizes){
-      res.render('quizes/index', {quizes: quizes, tema: tema,temas:temas, errors: []});
+      res.render('quizes/index', {quizes: quizes, tema: tema, temas:temas, errors: []});
     }
   ).catch(function(error){next(error);});
 };
@@ -97,7 +97,7 @@ exports.answer = function(req,res){
   if (req.query.respuesta === req.quiz.respuesta){
       resultado = 'Correcto';
   }
-  res.render('quizes/answer',{quiz:req.quiz, respuesta: resultado, errors: []});
+  res.render('quizes/answer',{quiz:req.quiz, respuesta:resultado, errors: []});
 };
 exports.author = function(req, res) {
   res.render('author/author', {author:'Antonio Ropero Muela',errors: []});

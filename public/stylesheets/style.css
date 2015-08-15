@@ -176,9 +176,12 @@ input:focus,input[type='password']:focus, select:focus{
 .listado1 form, .listado1 div{
   display:flex;
 }
-.comentarios{
+.comentarios, .comentarios_publicar{
   display:flex;
   justify-content:space-between;
+}
+.comentarios_publicar{
+	background:rgba(0,0,0,0.3);
 }
 .borrar_comentario{
 	margin-top:5%
@@ -220,6 +223,12 @@ input:focus,input[type='password']:focus, select:focus{
 }
 .respuesta_img{
 	width: 150px;
+}
+.defecto_img{
+	width:40px;
+}
+h2 strong{
+	color:rgb(244, 111, 54);
 }
 h2 span{
 	color:rgb(244, 111, 54);
