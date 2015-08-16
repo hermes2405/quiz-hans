@@ -136,6 +136,7 @@ exports.update = function(req, res, next) {
 
 // DELETE /user/:id
 exports.destroy = function(req, res) {
+  
   req.user.destroy().then( function() {
     // borra la sesión y redirige a /
     delete req.session.user;
