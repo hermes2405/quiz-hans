@@ -167,11 +167,13 @@ exports.update = function(req, res) {
 // DELETE /quizes/:id
 exports.destroy = function(req, res) {
   console.log("esta es la variable quizId: "+ req.quiz.id)
-    models.Comment.findAll({
+    models.Comment.findAll(
+          {
           where:{
               QuizId: Number(req.quiz.id)
             }
-          }).then(function(comment){
+          }).then(
+            function(comment){
             if (comment){
               for (index in comment){
                   comment[index].destroy()
@@ -185,7 +187,8 @@ exports.destroy = function(req, res) {
               req.quiz.destroy().then( function(){
               res.redirect('/quizes');
               next(new Error('No existe commentId=' + commentId))}
+              ).catch(function(error){next(error)});
+            }
           }
-        ).catch(function(error){next(error)});
-
+      )
 };
