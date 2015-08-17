@@ -84,14 +84,10 @@ exports.create = function(req, res) {
         }
     ).catch(function(error){next(error)});
 };
-
 // PUT /user/:id
 exports.update = function(req, res, next) {
   req.user.username  = req.body.user.username;
   req.user.password  = req.body.user.password;
-  if ( req.file ){
-        req.user.image = req.file.filename
-  };
   req.user
   .validate()
   .then(
@@ -100,7 +96,7 @@ exports.update = function(req, res, next) {
         res.render('user/' + req.user.id, {user: req.user, errors: err.errors});
       } else {
         req.user     // save: guarda campo username, password y imagen si existe en DB
-        .save( {fields: ["username", "password", "image"]})
+        .save( {fields: ["username", "password"]})
         .then( function(){
             var login = req.body.user.username;
             var password = req.body.user.password;
@@ -136,7 +132,7 @@ exports.update = function(req, res, next) {
 
 // DELETE /user/:id
 exports.destroy = function(req, res) {
-  
+
   req.user.destroy().then( function() {
     // borra la sesión y redirige a /
     delete req.session.user;
