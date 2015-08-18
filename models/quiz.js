@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes){
         validate: { notEmpty: {msg: "-> Selecciona un índice temático"}}
       },
       image:{
-        type: DataTypes.STRING
+        type: DataTypes.BLOB
       }
     }
   );
