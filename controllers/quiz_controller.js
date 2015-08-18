@@ -1,6 +1,5 @@
 var models = require('../models/models.js');
-var multer = require('multer');
-var upload = multer({ dest: '../public/images/'});
+
 
 // MW que permite acciones solamente si el quiz objeto pertenece al usuario logeado o si es cuenta admin
 exports.ownershipRequired = function(req, res, next){
