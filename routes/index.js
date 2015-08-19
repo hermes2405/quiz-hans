@@ -16,7 +16,7 @@ router.get('/author', function(req, res) {
 	}
   	res.render('author', datos);
 });
-router.param('quizId', quizController.load;
+router.param('quizId', quizController.load);
 
 router.get('/quizes',quizController.index);
 router.get('/quizes/:quizId(\\d+)',quizController.show);
