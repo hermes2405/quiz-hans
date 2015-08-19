@@ -22,16 +22,16 @@ exports.ownershipRequired = function(req, res, next){
 // Auto load - factoriza el código si ruta incluye :quizId
 exports.load = function(req, res, next, quizId) {
   models.Quiz.find({
-          where: { id: Number(quizId) },
-          include: [{ model: models.Comment }]
-      }).then(
-    function(quiz){
+    where: { id: Number(quizId) },
+    include: [{ model: models.Comment }]
+  }).then(function(quiz){
       if (quiz){
         req.quiz = quiz;
         next();
-      }else{ next(new Error('No existe quizId=' + quizId));}
-    }
-  ).catch(function(error){ next(error);});
+      }else{
+        next(new Error('No existe quizId=' + quizId));
+      }
+    }).catch(function(error){ next(error);});
 };
 
 // GET /quizes
@@ -78,9 +78,7 @@ exports.index = function(req, res) {
 // GET /quizes/:id
 exports.show = function(req, res, UserId) {
   var usuario=models.User.find({
-        where:{
-            id: Number(UserId)
-          }
+        where:{id: Number(UserId)}
   });
   var preguntaTema = req.quiz.tema
   var options = {};
@@ -118,23 +116,15 @@ exports.new = function(req, res){
 
 // POST /quizes/create
 exports.create = function(req, res){
-  if(req.session.user) {
-    req.body.quiz.UserId = req.session.user.id;
-  } else {
-    if(req.isAjax) {
-      console.log(req.body.quiz);
-      req.body.quiz.UserId = req.user.id;
-    }
-  }
+  req.body.quiz.UserId = req.session.user.id;
   if ( req.file ){
-        req.body.quiz.image = req.file.filename;
+        req.body.quiz.image = req.file.buffer;
   }
   var quiz= models.Quiz.build(req.body.quiz);
 
-//guarda en DB los campos pregunta y respuesta de quiz
     quiz
     .validate()
-    .then(
+    .then(          //guarda en DB los campos pregunta, respuesta, image, tema, UserId de quiz
       function(err){
         if(err) {
           res.render('quizes/new', {quiz: quiz, errors: err.errors});
@@ -165,7 +155,7 @@ exports.update = function(req, res) {
   if(req.file) {
     req.quiz.image = req.file.buffer;
   }
-  
+
   req.quiz
   .validate()
   .then(

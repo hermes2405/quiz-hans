@@ -51,14 +51,25 @@ header p span, header p a{
   margin-top:1%;
 }
 .login input[type=submit]{
-  width:25.5%;
+  width:24.8%;
 }
+
 /*+++++++++
  fin header
 +++++++++++*/
 /*+++++++++
  Menu lateral
 +++++++++++*/
+textarea {
+		width: 70%;
+    height: 100px;
+    padding: .5em;
+		border: 1px solid #5e3020;
+}
+textarea:focus{
+		border:2px solid rgb(244, 111, 54);
+		outline:none;
+}
 #n1{
   width: 15%;
 }
@@ -92,6 +103,8 @@ section{
 }
 .pre_com{
   width:80%;
+	text-align: center;
+	position:relative;
 }
 .mas_preguntas{
   width:15%;
@@ -116,6 +129,13 @@ ul li{
 }
 .tema{
   text-align:center;
+}
+.logueate{
+	background:#5e3020;
+	color:rgb(251, 194, 141);
+	width:35%;
+	padding:2%;
+	margin:6% auto;
 }
 .navegador button, .navegador input[type='submit']{
   border-top: 1px solid #5e3020;

@@ -67,7 +67,7 @@ exports.new = function(req, res) {
 // POST /user
 exports.create = function(req, res) {
     if ( req.file ){
-          req.body.user.image = req.file.filename;
+          req.body.user.image = req.file.buffer;
     }
     var user = models.User.build( req.body.user );
     user
@@ -87,6 +87,9 @@ exports.create = function(req, res) {
         }
     ).catch(function(error){next(error)});
 };
+exports.image = function(req, res) {
+  res.send(req.user.image);
+}
 // PUT /user/:id
 exports.update = function(req, res, next) {
   req.user.username  = req.body.user.username;

@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING
       },
       image_user:{
-        type: DataTypes.STRING
+        type: DataTypes.BLOB
       },
       creado:{
         type: DataTypes.DATE

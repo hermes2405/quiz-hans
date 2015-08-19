@@ -16,10 +16,12 @@ exports.ownershipRequired = function(req, res, next){
 
                 if (isAdmin || objQuizOwner === logUser) {
                     next();
-                } else {
+                }else{
                     res.redirect('/');
                 }
-            } else{next(new Error('No existe quizId=' + quizId))}
+            }else{
+              next(new Error('No existe quizId=' + quizId))
+            }
         }
     ).catch(function(error){next(error)});
 };
@@ -27,17 +29,18 @@ exports.ownershipRequired = function(req, res, next){
 //Autoload: id de comentarios
 
 exports.load = function(req, res, next, commentId) {
-  models.Comment.find({
+    models.Comment.find({
         where:{
             id: Number(commentId)
-          }
-        }).then(function(comment){
-          if (comment){
+        }
+    }).then(function(comment){
+        if (comment){
             req.comment= comment;
             next();
-          }else{ next(new Error('No existe commentId=' + commentId))}
-    }
-  ).catch(function(error){next(error)});
+        }else{
+            next(new Error('No existe commentId=' + commentId))
+        }
+      }).catch(function(error){next(error)});
 };
 
 //GET /quizes/:quizId/comments/new
@@ -54,7 +57,7 @@ exports.create = function(req, res){
       username: req.session.user.username,
       QuizId: req.params.quizId,
       UserId: req.session.user.id,
-      image_user: req.session.user.image,
+      //image_user: req.session.user.image,
       creado: req.session.user.creado
     });
 

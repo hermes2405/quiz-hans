@@ -67,12 +67,10 @@ exports.create = function(req, res) {
       username:user.username,
       image:user.image,
       creado:user.createdAt,
-      isAdmin:user.isAdmin};
-      if(req.isAjax) {
-        res.send({user: req.session.user, sessionID: req.sessionID, token: createToken(user)});
-      } else {
-        res.redirect(req.session.redir.toString());
-      } // redirección a path anterior a login
+      isAdmin:user.isAdmin
+    };
+      res.redirect(req.session.redir.toString());
+   // redirección a path anterior a login
   });
 };
 

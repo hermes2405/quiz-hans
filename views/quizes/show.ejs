@@ -17,7 +17,7 @@
               </a>
             </p>
         <% }else{%>
-            <p class="margen">  Logueate para hacer un comentario. </p>
+            <p class="margen logueate">  Logueate para hacer un comentario. </p>
         <% } %>
 
           <h2  class='margenes'>
@@ -34,7 +34,7 @@
                   <div class='comentarios'>
                     <div class="autor_comentario">
                         <%if (quiz.Comments[index].image_user){%>
-                            <img class="comment_img" src="/media/user/<%= quiz.Comments[index].image_user %>" />
+                            <img class="comment_img" src="/imagen/<%= quiz.Comments[index].UserId %>" />
                         <% }else{%>
                             <img class="comment_img" src="/images/defecto.png" />
                         <%} %>
@@ -75,7 +75,7 @@
                         <div class='comentarios_publicar'>
                           <div class="autor_comentario">
                             <%if (quiz.Comments[index].image_user){%>
-                                <img class="comment_img" src="/media/user/<%= quiz.Comments[index].image_user %>" />
+                                <img class="comment_img" src="/imagen/<%= quiz.Comments[index].UserId %>"  />
                             <% }else{%>
                                 <img class="comment_img" src="/images/defecto.png" />
                             <%} %>
