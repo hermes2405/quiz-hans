@@ -130,7 +130,7 @@ exports.create = function(req, res){
           res.render('quizes/new', {quiz: quiz, errors: err.errors});
         }else{
           quiz // save: guarda en DB campos pregunta y respuesta de quiz
-          .save({fields: [ "pregunta", "respuesta","image", "tema","UserId" ]})
+          .save({fields: [ "pregunta", "respuesta", "image", "tema", "UserId" ]})
           .then(function(){res.redirect("/quizes")}); // Redireccion HTTP (URL relativo) lista de preguntas
         }
       }
