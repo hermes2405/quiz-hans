@@ -1,0 +1,16 @@
+<table>
+	<% var i;for (var i = 0; i < quizes.length; i++) { %>
+		<tr>
+			<td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+			<td><a href="quizes/<%= quizes[i].id %>/edit"><button>Editar</button></a></td>
+			<td>
+				<form action="quizes/<%= quizes[i].id%>?_method='delete'" method='post'>
+					<button type='submit' onclick="resturn confirm('Borrar: <%= quizes[i].pregunta%>')">
+						Borrar
+					</button>
+				</form>
+			</td>
+		</tr>							
+	<%}	%>
+</table><p>
+<a href="quizes/new"><button type="button">Crear Pregunta</button></a>
