@@ -33,7 +33,7 @@ exports.load = function(req, res, next, quizID){
 
 exports.edit = function(req, res){
 	var quiz = req.quiz;
-	res.render('quizes/edit', {quiz:quiz, , errors : []})
+	res.render('quizes/edit', {quiz:quiz, errors : []})
 }
 
 exports.update = function(req, res){
