@@ -10,7 +10,7 @@
     "npm": "2.10.x"
   },
   "devDependencies": {
-    "sqlite3": "^3.0.8"
+    "sqlite3": "^3.0.10"
   },
   "dependencies": {
     "body-parser": "~1.8.1",
@@ -29,7 +29,7 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.3.2",
     "serve-favicon": "~2.1.3",
-    "sqlite3": "^3.0.10"
+
   },
   "description": "desarrollo proyecto quiz",
   "main": "app.js",
