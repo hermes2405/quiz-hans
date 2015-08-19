@@ -4,7 +4,7 @@ var models = require('../models/models.js');
 exports.ownershipRequired = function(req, res, next){
     models.Quiz.find({
             where: {
-                  id: Number(req.comment.QuizId)
+                id: Number(req.comment.QuizId)
             }
         }).then(function(quiz) {
             if (quiz) {
@@ -46,23 +46,6 @@ exports.new = function(req, res){
   res.render('comments/new.ejs', {quizid: req.params.quizId, errors:[]});
 };
 
-//POST /quizes/:quizId/comments
-exports.imagen = function(req, res){
-  models.Comment.find({
-        where:{
-            UserId: Number(req.session.user.id)
-          }
-        }).then(function(comment){
-          if (comment){
-
-            req.comment.imageUser = req.user.image;
-            comment.image_user // save: guarda en DB campo texto de comment
-            .save()
-            next();
-          }else{ next(new Error('No existe commentId=' + commentId))}
-    }
-  ).catch(function(error){next(error)});
-};
 
 
 exports.create = function(req, res){
@@ -94,9 +77,13 @@ exports.create = function(req, res){
 // GET/ quizes/:quizId/comments/:commentId/publish
 exports.publish = function(req, res){
   req.comment.publicado = true;
-  req.comment.save( {fields: ["publicado"]})
-  .then( function(){res.redirect('/quizes/'+req.params.quizId);})
-  .catch(function(error){next(error)});
+  req.comment.save( {
+    fields: ["publicado"]
+  }).then( function(){
+    res.redirect('/quizes/'+req.params.quizId);
+  }).catch(function(error){
+    next(error)
+  });
 };
 
 

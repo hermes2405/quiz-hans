@@ -1,7 +1,7 @@
 <div class='preguntas_comentarios'>
     <div class='pre_com'>
         <%if (quiz.image){%>
-            <p><img class="quiz_img margen" src="/media/quizes/<%= quiz.image %>"></p>
+            <p><img class="quiz_img margen" src="/quizes/<%=quiz.id%>/image"></p>
         <% } %>
         <h3> <%= quiz.tema %></h3>
 

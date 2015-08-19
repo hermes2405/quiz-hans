@@ -1,7 +1,7 @@
 var express = require('express');
 var multer  = require('multer');
 var storage = multer.memoryStorage();
-var upload = multer({ storage: storage });
+var upload = multer({ storage: storage }).single('image');
 //var upload_quizes = multer({ dest: './public/media/quizes'});
 //var upload_user = multer({ dest: './public/media/user'});
 var router = express.Router();
@@ -31,13 +31,13 @@ router.get('/logout', sessionController.destroy); // destruir sesión
 
 // Definición de rutas de cuenta
 router.get('/user',                     userController.new);     // formulario sign un
-router.post('/user',                    upload.single("user[image]"),
+router.post('/user',                    upload,
                                         userController.create);     // registrar usuario
 router.get('/user/:userId(\\d+)/edit',  sessionController.loginRequired,
                                         userController.ownershipRequired,
                                         userController.edit);     // editar información de cuenta
 router.put('/user/:userId(\\d+)',       sessionController.loginRequired,
-                                        upload.single("user[image]"),
+                                        upload,
                                         userController.update);     // actualizar información de cuenta
 router.delete('/user/:userId(\\d+)',    sessionController.loginRequired,
                                         userController.ownershipRequired,
@@ -51,19 +51,19 @@ router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 router.get('/quizes/new', 				         sessionController.loginRequired,
                                            quizController.new);
 router.post('/quizes/create',              sessionController.loginRequired,
-                                           upload.single("quiz[image]"),
+                                           upload,
                                            quizController.create);
 router.get('/quizes/:quizId(\\d+)/edit',   sessionController.loginRequired,
                                            quizController.ownershipRequired,
                                            quizController.edit);
 router.put('/quizes/:quizId(\\d+)',        sessionController.loginRequired,
                                            quizController.ownershipRequired,
-                                           upload.single("quiz[image]"),
+                                           upload,
                                            quizController.update);
 router.delete('/quizes/:quizId(\\d+)',     sessionController.loginRequired,
                                            quizController.ownershipRequired,
                                            quizController.destroy);
-
+router.get('/quizes/:quizId(\\d+)/image',  quizController.image);
 // Definición de rutas de comentarios
 router.get('/quizes/:quizId(\\d+)/comments/new',                        commentController.new);
 router.post('/quizes/:quizId(\\d+)/comments',                           commentController.create);

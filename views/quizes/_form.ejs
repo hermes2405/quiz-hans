@@ -1,5 +1,5 @@
 <% if (quiz.image){%>
-    <img class="user_img margen" src="/media/quizes/<%= quiz.image %>">
+    <img class="user_img margen" src="/quizes/<%= quiz.id %>/image">
 <% }%>
 <p><label for="select" class="rem">Tema:</label>
   <select name="quiz[tema]">
@@ -16,7 +16,7 @@
 <input type="text" id="resp" name="quiz[respuesta]" placeholder="<%= quiz.respuesta %>" /></p>
 <p class="margen">
   <label for="image" class="rem">Imagen:</label>
-  <input type="file" accept="image/*" id="image" name="quiz[image]"/>
+  <input type="file" accept="image/*" id="image" name="image"/>
 </p>
 <a class="margen" href="/quizes"><button type="button">Cancelar</button></a>
 <input class="margen" type="submit" value="Guardar">

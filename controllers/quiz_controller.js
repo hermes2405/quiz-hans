@@ -4,8 +4,13 @@ var models = require('../models/models.js');
 // MW que permite acciones solamente si el quiz objeto pertenece al usuario logeado o si es cuenta admin
 exports.ownershipRequired = function(req, res, next){
     var objQuizOwner = req.quiz.UserId;
-    var logUser = req.session.user.id;
-    var isAdmin = req.session.user.isAdmin;
+    if(req.headers.authorization) {
+      var logUser = req.user.id;
+      var isAdmin = req.user.isAdmin;
+    } else {
+      var logUser = req.session.user.id;
+      var isAdmin = req.session.user.isAdmin;
+    }
 
     if (isAdmin || objQuizOwner === logUser) {
         next();
@@ -16,7 +21,6 @@ exports.ownershipRequired = function(req, res, next){
 
 // Auto load - factoriza el código si ruta incluye :quizId
 exports.load = function(req, res, next, quizId) {
-
   models.Quiz.find({
           where: { id: Number(quizId) },
           include: [{ model: models.Comment }]
@@ -104,19 +108,28 @@ exports.author = function(req, res) {
 
 // GET /quizes/new
 exports.new = function(req, res){
-  var quiz = models.Quiz.build( // crea objeto quiz
-    {pregunta:"Pregunta", respuesta:"Respuesta", tema:"Tema"}
-  );
+  var quiz = models.Quiz.build({ // crea objeto quiz
+      pregunta:"Pregunta",
+      respuesta:"Respuesta",
+      tema:"Tema"
+  });
   res.render('quizes/new', {quiz:quiz, errors: []});
 };
 
 // POST /quizes/create
 exports.create = function(req, res){
+  if(req.session.user) {
     req.body.quiz.UserId = req.session.user.id;
-    if ( req.file ){
-          req.body.quiz.image = req.file.filename;
+  } else {
+    if(req.isAjax) {
+      console.log(req.body.quiz);
+      req.body.quiz.UserId = req.user.id;
     }
-    var quiz= models.Quiz.build(req.body.quiz);
+  }
+  if ( req.file ){
+        req.body.quiz.image = req.file.filename;
+  }
+  var quiz= models.Quiz.build(req.body.quiz);
 
 //guarda en DB los campos pregunta y respuesta de quiz
     quiz
@@ -137,17 +150,22 @@ exports.create = function(req, res){
 // GET quizes/:id/edit
 exports.edit = function(req, res){
   var quiz = req.quiz; // autoload de instancia de quiz
- var image = req.quiz.image
+  var image = req.quiz.image
   res.render('quizes/edit', {quiz: quiz,image: image, errors: []});
 };
-
+exports.image = function(req, res) {
+  res.send(req.quiz.image);
+}
 // PUT /quizes/:id
 exports.update = function(req, res) {
   req.body.quiz.UserId = req.session.user.id;
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
   req.quiz.tema = req.body.quiz.tema;
-  req.quiz.image = req.file.filename;
+  if(req.file) {
+    req.quiz.image = req.file.buffer;
+  }
+  
   req.quiz
   .validate()
   .then(

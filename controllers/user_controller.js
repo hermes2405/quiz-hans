@@ -40,9 +40,12 @@ exports.autenticar = function(login, password, callback) {
     	if (user) {
     		if(user.verifyPassword(password)){
             	callback(null, user);
-        	}
-        	else { callback(new Error('Password erróneo.')); }
-      	} else { callback(new Error('No existe user=' + login))}
+        	}else{
+            callback(new Error('Password erróneo.'));
+          }
+      }else{
+        callback(new Error('No existe user=' + login))
+      }
     }).catch(function(error){callback(error)});
 };
 
@@ -89,7 +92,7 @@ exports.update = function(req, res, next) {
   req.user.username  = req.body.user.username;
   req.user.password  = req.body.user.password;
   if ( req.file ){
-        req.user.image = req.file.filename
+        req.user.image = req.file.buffer
   };
   req.user
   .validate()
