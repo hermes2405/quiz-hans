@@ -211,6 +211,7 @@ input:focus,input[type='password']:focus, select:focus{
 .quiz_img{
 	position:absolute;
 	top:50px;
+	left:0;
 	width:150px;
 }
 .comment_img{
