@@ -198,4 +198,3 @@ exports.destroy = function(req, res) {
           }
       )
 };
->>>>>>> c0559db4a050470c958af8d13ea4e26421c7997a
